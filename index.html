@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Control LED</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding: 50px 15px;
+    }
+    button {
+      padding: 20px 35px;
+      font-size: 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+    .on { background: green; }
+    .off { background: red; }
+  </style>
+</head>
+<body>
+
+  <h1>Control de mi LED 💡</h1>
+
+  <button class="on" onclick="controlLED(true)">
+    ENCENDER
+  </button>
+
+  <button class="off" onclick="controlLED(false)">
+    APAGAR
+  </button>
+
+  <p id="estado">Conectado</p>
+
+  <script>
+    const firebaseURL =
+      "https://practica-726eb-default-rtdb.firebaseio.com/led.json";
+
+    async function controlLED(estado) {
+      try {
+        const respuesta = await fetch(firebaseURL, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(estado)
+        });
+
+        if (!respuesta.ok) throw new Error("Error");
+
+        document.getElementById("estado").textContent =
+          estado ? "LED ENCENDIDO" : "LED APAGADO";
+
+      } catch (error) {
+        document.getElementById("estado").textContent =
+          "Error de conexión";
+      }
+    }
+  </script>
+
+</body>
+</html>
