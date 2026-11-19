@@ -29,11 +29,11 @@
   <h1>Control de mi LED 💡</h1>
 
   <button class="off" onclick="controlLED(true)">
-    Encender
+    Apagar
   </button>
 
   <button class="on" onclick="controlLED(false)">
-    Apagar
+    Encender
   </button>
 
   <p id="estado">Conectado</p>
@@ -55,7 +55,7 @@
         if (!respuesta.ok) throw new Error("Error");
 
         document.getElementById("estado").textContent =
-          estado ? "LED Apagado" : "LED Encendido";
+          estado ? "LED Encendido" : "LED Apagado";
 
       } catch (error) {
         document.getElementById("estado").textContent =
