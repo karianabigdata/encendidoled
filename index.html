@@ -33,7 +33,7 @@
   </button>
 
   <button class="on" onclick="controlLED(false)">
-    Enciende la Luz
+    Enciende
   </button>
 
   <p id="estado">Conectado</p>
@@ -55,7 +55,7 @@
         if (!respuesta.ok) throw new Error("Error");
 
         document.getElementById("estado").textContent =
-          estado ? "LED Encendido" : "LED Apagado";
+          estado ? "LED apagado" : "LED Encendido";
 
       } catch (error) {
         document.getElementById("estado").textContent =
