@@ -55,7 +55,7 @@
         if (!respuesta.ok) throw new Error("Error");
 
         document.getElementById("estado").textContent =
-          estado ? "LED apagado" : "LED Encendido";
+          estado ? "LED Prendido" : "LED Apagado";
 
       } catch (error) {
         document.getElementById("estado").textContent =
